@@ -1,5 +1,6 @@
 import speech_recognition as s_r
 from googletrans import Translator
+import pyttsx3
 import openai
 openai.api_key = "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"
 
@@ -36,3 +37,18 @@ completions = openai.Completion.create(
 
 message = completions.choices[0].text
 print(message)
+
+# create an engine instance
+engine = pyttsx3.init()
+
+# set the voice and rate
+voice = engine.getProperty('voices')[1]
+engine.setProperty('voice', voice.id)
+engine.setProperty('rate', 150)
+
+# input text to be converted to speech
+text = message
+
+# speak the text
+engine.say(text)
+engine.runAndWait()
