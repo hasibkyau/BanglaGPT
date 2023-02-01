@@ -1,7 +1,10 @@
 import speech_recognition as s_r
 from googletrans import Translator
 import pyttsx3
+import pygame
 import openai
+from gtts import gTTS
+
 openai.api_key = "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"
 
 
@@ -49,6 +52,30 @@ engine.setProperty('rate', 150)
 # input text to be converted to speech
 text = message
 
+# converting english to bangla
+# translator = Translator(dest='bn')
+bangla_text = translator.translate(text, dest="bn").text
+
+# translated = translator.translate(text).text
+print(bangla_text)
+
+# text = "আমি বাংলা বলছি"
+
+tts = gTTS(bangla_text, lang='bn')
+tts.save("output.mp3")
+
 # speak the text
-engine.say(text)
-engine.runAndWait()
+# engine.say(text)
+# engine.say(text)
+# engine.runAndWait()
+
+pygame.init()
+pygame.mixer.init()
+pygame.mixer.music.load("output.mp3")
+pygame.mixer.music.play()
+
+while pygame.mixer.music.get_busy():
+    pygame.time.wait(100)
+
+pygame.mixer.music.stop()
+pygame.quit()
