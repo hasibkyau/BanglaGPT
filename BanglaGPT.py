@@ -5,7 +5,7 @@ import pygame
 import openai
 from gtts import gTTS
 
-openai.api_key = "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"
+openai.api_key = "Your API KEY"
 
 
 # print(s_r.__version__) # just to print the version not required
