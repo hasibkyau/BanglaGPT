@@ -3,7 +3,7 @@
 import sys
 from chatgpt import Conversation
 
-API_KEY = "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"
+API_KEY = "YOUR API"
 
 conversation = Conversation()
 
