@@ -1,7 +1,7 @@
 import openai
 
 # set up API key
-openai.api_key = "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"
+openai.api_key = "Your API KEY"
 
 # generate text with the GPT-3 model
 prompt = "python chatgpt code example"
